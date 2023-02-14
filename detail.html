@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">	
+	<!-- CSS bootstrap -->
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+	<!-- Custom -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<!-- Icon -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<title>Florist</title>
+</head>
+<body>	
+	<!-- Navbar -->
+	<nav class="navbar navbar-expand-lg navbar-light">
+	  <div class="container-fluid">
+	    <a class="navbar-brand" href="index.html">
+	    	<img src="assets/new_logo.png" alt="" >
+	    </a>
+	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+	      <ul class="navbar-nav quando-font">
+	        <li class="nav-item me-5">
+	          <a class="nav-link" aria-current="page" href="index.html">Home</a>
+	        </li>
+	        <li class="nav-item dropdown me-5">
+	          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	            Product
+	          </a>
+	          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	            <li><a class="dropdown-item" href="product.html">Hand Bouquet</a></li>
+	            <li><a class="dropdown-item" href="#">Standing Flowers</a></li>
+	            <li><a class="dropdown-item" href="#">Special Flowers</a></li>
+	          </ul>
+	        </li>
+	        <li class="nav-item me-5">
+	          <a class="nav-link" href="cart.html">
+	          	<i class="fa fa-shopping-bag fa-1x" aria-hidden="true"></i>
+	            <span id="cart-badge" class="badge rounded-pill translate-middle bg-danger">0</span>
+	          </a>
+	        </li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
+	<div class="container-fluid p-0">
+		<div class="second-header">
+			<h2>Product List</h2>
+			<p>Where flowers are our inspiration</p>
+		</div>
+	</div>
+	<!-- Toast -->
+	<!-- Flexbox container for aligning the toasts -->
+	<div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center w-100">
+	  <!-- Then put toasts within -->
+	  <div class="toast d-flex align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+		  <div class="toast-body">
+		    Successfully added to cart.
+		  </div>
+		  <button type="button" class="btn-close btn-close-white ms-auto me-2" data-bs-dismiss="toast" aria-label="Close"></button>
+		</div>
+	</div>
+	<!-- Card -->
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-md-5 pt-2">
+				<img src="assets/bouquet1.jpg" class="card-img-top" alt="...">
+			</div>
+			<div class="col-12 col-md-7 pt-3 pt-lg-2 ps-lg-5 mulish-font">				
+				<h2>Bouquet 1</h2>
+				<p>Rp 150.000,00</p>
+				<br>
+				<p>Bouquet ini cocok untuk acara wedding, ulang tahun, wisuda, dll.</p>				
+				<button type="button" class="btn btn-dark btn-lg" onclick="showSpinner()">
+					<span id="spin" class="spinner-border spinner-border-lg d-none" role="status" aria-hidden="true"></span>
+  					<span id="text" >Add to Cart</span>
+				</button>
+
+				<br><br>
+				<p>Categories : Hand bouquet</p>
+				<p>Ordering  : H-3 <i class="fa fa-info-circle" data-bs-container="body" data-bs-toggle="tooltip" data-bs-placement="right" title="Sameday delivery call customer service"></i></p>
+				
+				<!-- Accordion -->
+				<div class="accordion accordion-flush pt-3 pb-3" id="accordionFlushExample">
+				  <div class="accordion-item">
+				    <h2 class="accordion-header" id="flush-headingOne">
+				      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+				        Description
+				      </button>
+				    </h2>
+				    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+				      <div class="accordion-body">Hand Bouquet warna ungu .</div>
+				    </div>
+				  </div>				  
+				</div>
+			</div>
+		</div>
+	</div>  
+	<div class="contact">
+		<i class="fa fa-phone" aria-hidden="true"></i><span> 0811223311</span>
+	</div>
+	<footer class="p-0 text-center pt-4 pb-4">
+		Copyright&#169 2021
+	</footer>
+	<!-- JS bootstrap -->
+	<script type="text/javascript" src="bootstrap/js/bootstrap.bundle.js"></script>
+	<script>
+		// Tooltips
+		var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+		var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  			return new bootstrap.Tooltip(tooltipTriggerEl)
+		})
+		// Toast
+		var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+		var toastList = toastElList.map(function (toastEl) {
+  			return new bootstrap.Toast(toastEl)
+		}) 		
+		
+		// Spinner
+		function showSpinner(){
+			// Get the modal
+			var spin = document.getElementById("spin");
+			var text = document.getElementById("text");
+
+			text.style.display = "none";
+			spin.classList.remove("d-none");
+			spin.classList.add("d-block");
+
+			var delayInMilliseconds = 1000; //1 second
+				
+			setTimeout(function() {
+  				spin.classList.remove("d-block");
+				spin.classList.add("d-none");
+				text.style.display = "block";
+				toastList.forEach(toast => toast.show()); // This show them				
+			}, delayInMilliseconds);			
+		}		
+	</script>	
+</body>
+</html>
